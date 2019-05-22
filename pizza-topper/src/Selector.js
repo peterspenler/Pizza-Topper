@@ -7,9 +7,24 @@ import PizzaComponent from './PizzaComponent'
 class Selector extends React.Component{
 	constructor(props){
 		super(props)
+		this.notifyRef = React.createRef()
 		this.state = {
-			userList: [{Name:"Peter", Id:-1}, {Name:"John", Id:-2}, {Name:"Laura", Id:-3}, {Name:"Andrew", Id:-4}],
+			notifyClass: 'notify',
+			notification: 'Notification',
+			userList: [{Name:"Peter", Id:1}],
 		}
+	}
+
+	showNotification = msg => {
+		this.setState({
+			notifyClass: 'notify-show',
+			notification: msg
+		})
+		setTimeout(() =>{
+			this.setState({
+				notifyClass: 'notify'
+			})
+		}, 2000)
 	}
 
 	addUser = user => {
@@ -33,19 +48,22 @@ class Selector extends React.Component{
 								user={{name:"peter", id:'1'}}
 								userList={this.state.userList}
 								addUser={this.addUser}
+								showNotification={this.showNotification}
 							/>}/>
 							<Route path="/users" render={(props) => <UserComponent {...props}
 								user={{name:"peter", id:'1'}}
 								userList={this.state.userList}
 								addUser={this.addUser}
+								showNotification={this.showNotification}
 							/>}/>
 							<Route path="/select" render={(props) => <SelectComponent {...props}
-								window="select"
+								showNotification={this.showNotification}
 							/>}/>
 							<Route path="/pizza" render={(props) => <PizzaComponent {...props}
-								window="pizza"
+								showNotification={this.showNotification}
 							/>}/>
 						</Switch>
+						<div className={this.state.notifyClass}>{this.state.notification}</div>
 					</div>
 				</div>
 			</div>

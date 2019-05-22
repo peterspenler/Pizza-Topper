@@ -11,7 +11,7 @@ import(
 	"os"
 )
 
-const searchQuery = "SELECT Username, Id FROM Users WHERE Username LIKE ? ORDER BY Username ASC"
+const searchQuery = "SELECT Username, Id FROM Users WHERE Username LIKE ? ORDER BY Username ASC LIMIT 8"
 
 type User struct {
 	Name string
