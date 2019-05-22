@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import NavBar from './NavBar.js'
-import Header from './Header.js'
 import Selector from './Selector'
 
 class App extends React.Component {

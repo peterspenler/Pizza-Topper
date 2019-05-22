@@ -19,6 +19,7 @@ img {
 	height:100%;
 	width:100%;
 	grid-area:navbar;
+	box-shadow: 5px 5px 20px -5px rgba(0,0,0,0.6);
 }
 
 .navbar p{
@@ -36,6 +37,7 @@ img {
 	border-left:4px solid #6C6EA0;
 	outline:none;
 	transition: border 0.25s;
+	cursor: pointer;
 }
 
 .navbar .selected{
@@ -65,8 +67,7 @@ select{
 
 .selector-window{
 	background-color: #FFF;
-	height:100%;
-	width:100%;
+	max-height:100%;
 	border-radius:5px;
 	box-shadow: 5px 5px 20px -5px rgba(0,0,0,0.6);
 }
@@ -75,11 +76,100 @@ select{
 	background-color: #FF1053;
 	color:white;
 	font-weight: bold;
-	width:100%;
 	border-radius:5px 5px 0px 0px;
 	padding:10px 20px 14px 20px;
 	box-sizing: border-box;
 }
+
+.window-content{
+	padding:14px 20px;
+	overflow:hidden;
+}
+
+/* USERSCOMP CSS HERE */
+.userComp{
+	display:grid;
+	max-width: 700px;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	grid-column-gap: 16px;
+	grid-template-areas: 
+		"search users"
+		"suggest users"
+		"guest users"
+		". users"
+}
+
+.userList{
+	grid-area:users;
+	height:100%;
+}
+
+.userSearch{
+	grid-area:search;
+	width:100%;
+	justify-content: center;
+}
+
+.suggestList{
+	grid-area:suggest;
+}
+
+.addGuest{
+	margin-top:10px;
+	grid-area:guest;
+	height:30px;
+	background-color:#66C7F4;
+	color:black;
+	border:0px;
+	border-bottom:solid 2px #0f97d7;
+	border-right:solid 2px #0f97d7;
+	border-radius: 3px;
+	outline:none;
+	transition: box-shadow 0.3s;
+}
+
+.addGuest:hover{
+	box-shadow: 4px 4px 4px -1px rgba(0,0,0,0.4);
+	transition: box-shadow 0.3s;
+}
+
+.userComp input{
+	width:100%;
+	background-color: white;
+	border-width: 2px;
+	border-style:inset;
+
+	height:30px;
+	margin:6px 0px;
+	padding:0px 6px;
+	box-sizing:border-box;
+}
+
+.userComp ul{
+	padding:0px;
+	margin:0px;
+	height:100%;
+}
+
+.userComp li{
+	list-style: none;
+	width:100%;
+	background-color: #CCC;
+	padding:4px 10px;
+	box-sizing:border-box;
+	margin: 5px 0px;
+	border-radius: 3px;
+	transition: background-color 0.2s;
+}
+
+.userComp li:hover{
+	background-color: #AAA;
+	transition: background-color 0.2s;
+}
+/* SELECTCOMP CSS HERE */
+/* PIZZACOMP CSS HERE */
+
 
 /* COLORS
 #FF1053 (red)
