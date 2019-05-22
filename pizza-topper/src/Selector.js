@@ -8,7 +8,7 @@ class Selector extends React.Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			userList: [{Name:"Peter", Id:1}, {Name:"John", Id:2}, {Name:"Laura", Id:3}, {Name:"Andrew", Id:4}],
+			userList: [{Name:"Peter", Id:-1}, {Name:"John", Id:-2}, {Name:"Laura", Id:-3}, {Name:"Andrew", Id:-4}],
 		}
 	}
 

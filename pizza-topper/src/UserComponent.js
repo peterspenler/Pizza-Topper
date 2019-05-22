@@ -16,19 +16,13 @@ class UserComponent extends React.Component{
 			search: searchText
 		})
 
-		var url = "http://localhost:4000/data/" + e.target.value
-
-		console.log(url)
-
-		fetch(url)
+		fetch("http://localhost:4000/data/" + e.target.value)
 		.then(res => res.json())
     	.then(
     		(result) => {
     			this.setState({
 					suggestions: result.Suggestions
 				});
-				console.log(this.state.suggestions)
-				//console.log(result.Suggestions)
 			},
 			(error) => {
 				console.log(error)
