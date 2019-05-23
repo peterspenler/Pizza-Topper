@@ -268,8 +268,15 @@ select{
 	grid-template-columns: 180px 1fr;
 	grid-template-rows: auto;
 	grid-column-gap: 16px;
-	grid-template-areas: 
+	grid-row-gap: 14px;
+	grid-template-areas:
+		"providers ingredients" 
 		"users ingredients"
+		". ingredients"
+}
+
+.providers{
+	grid-area:providers;
 }
 
 .ingredientList{
@@ -279,18 +286,23 @@ select{
 	display: grid;
 	grid-gap: 8px;
 	grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
+	grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
 	text-align: center;
+	align-items: center;
+	justify-items: center;
 }
 
 .ingredientList li{
 	padding:10px;
 	margin:0;
 	width:100px;
+	height:100px;
 	list-style: none;
 	border-radius: 4px;
 	background-color: #CCC;
 	transition:background-color 0.3s;
 	user-select:none;
+	box-sizing: border-box;
 }
 
 .ingredientList li:hover{

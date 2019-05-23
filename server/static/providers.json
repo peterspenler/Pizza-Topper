@@ -1,0 +1,84 @@
+{ "Providers":[
+	{	"Name": "test",
+		"Ingredients": [
+			{"Name":"Pepperoni", "Id":1},
+			{"Name":"Green Peppers", "Id":16},
+			{"Name":"Onions", "Id":19},
+			{"Name":"Jalapenos", "Id":21},
+			{"Name":"Sausage", "Id":3},
+			{"Name":"Tomatos", "Id":20},
+			{"Name":"Bacon", "Id":6},
+			{"Name":"Chicken", "Id":7},
+			{"Name":"Spinach", "Id":22},
+			{"Name":"Pineapple", "Id":18}
+		]
+	},
+	{	"Name": "test2",
+		"Ingredients": [
+			{"Name":"Pepperoni", "Id":1},
+			{"Name":"Green Peppers", "Id":16},
+			{"Name":"Red Peppers", "Id":24},
+			{"Name":"Jalapenos", "Id":21},
+			{"Name":"Beef", "Id":4},
+			{"Name":"Tomatos", "Id":20},
+			{"Name":"Bacon", "Id":6}
+		]
+	},
+	{	"Name": "dominos",
+		"Ingredients": [
+			{"Name":"Pepperoni", "Id":1},
+			{"Name":"Brooklyn Pepperoni", "Id":2},
+			{"Name":"Sausage", "Id":3},
+			{"Name":"Ground Beef", "Id":4},
+			{"Name":"Ham", "Id":5},
+			{"Name":"Bacon", "Id":6},
+			{"Name":"Chicken", "Id":7},
+			{"Name":"Philly Steak", "Id":8},
+			{"Name":"Cheddar", "Id":9},
+			{"Name":"Feta", "Id":10},
+			{"Name":"Parmesan Asiago", "Id":11},
+			{"Name":"Provolone", "Id":12},
+			{"Name":"Hot Banana Peppers", "Id":13},
+			{"Name":"Black Olives", "Id":14},
+			{"Name":"Green Olives", "Id":15},
+			{"Name":"Green Pepper", "Id":16},
+			{"Name":"Mushroom", "Id":17},
+			{"Name":"Pineapple", "Id":18},
+			{"Name":"Onion", "Id":19},
+			{"Name":"Tomatoes", "Id":20},
+			{"Name":"Jalapeno Peppers", "Id":21},
+			{"Name":"Baby Spinach", "Id":22},
+			{"Name":"Roasted Red Peppers", "Id":23}
+		]
+	},
+	{
+		"Name": "master",
+		"Ingredients": [
+			{"Name":"Pepperoni", "Id":1},
+			{"Name":"Brooklyn Pepperoni", "Id":2},
+			{"Name":"Sausage", "Id":3},
+			{"Name":"Ground Beef", "Id":4},
+			{"Name":"Ham", "Id":5},
+			{"Name":"Bacon", "Id":6},
+			{"Name":"Chicken", "Id":7},
+			{"Name":"Philly Steak", "Id":8},
+			{"Name":"Cheddar", "Id":9},
+			{"Name":"Feta", "Id":10},
+			{"Name":"Parmesan Asiago", "Id":11},
+			{"Name":"Provolone", "Id":12},
+			{"Name":"Hot Banana Peppers", "Id":13},
+			{"Name":"Black Olives", "Id":14},
+			{"Name":"Green Olives", "Id":15},
+			{"Name":"Green Pepper", "Id":16},
+			{"Name":"Mushroom", "Id":17},
+			{"Name":"Pineapple", "Id":18},
+			{"Name":"Onion", "Id":19},
+			{"Name":"Tomatoes", "Id":20},
+			{"Name":"Jalapeno Peppers", "Id":21},
+			{"Name":"Baby Spinach", "Id":22},
+			{"Name":"Roasted Red Peppers", "Id":23},
+			{"Name":"Red Peppers", "Id":24}
+		]
+	}
+	]
+}

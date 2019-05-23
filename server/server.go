@@ -3,6 +3,7 @@ package main
 import(
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
+	//"github.com/gin-contrib/static"
 	_ "github.com/go-sql-driver/mysql"
 	"net/http"
 	"encoding/json"
@@ -51,6 +52,10 @@ func initRouter(dbusr *sql.DB) *gin.Engine {
 	gin.SetMode(gin.TestMode)
 
 	r.Use(cors.Default())
+
+	r.Static("/static", "./static")
+
+	//r.Use(static.Serve("/static", "./static"))
 
 	r.GET("/data/", func(c *gin.Context){
 
