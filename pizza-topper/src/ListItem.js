@@ -10,7 +10,7 @@ class ListItem extends React.Component{
 
 	handleClick = e => {
 		e.preventDefault()
-		if(this.props.type === "suggest" || this.props.type === "ingredient"){
+		if(this.props.type !== "user"){
 			this.props.onItemClick(this.props.object)
 		}
 	}
@@ -30,21 +30,32 @@ class ListItem extends React.Component{
 		}
 	}
 
+	shouldHighlight = () => {
+		if(typeof(this.props.user) !== "undefined"){
+			if(this.props.object.Id === this.props.user.Id){
+				return true
+			}
+		}
+		return false
+	}
+
 	render() {
 		const type = this.state.type
 		let exitButton
-		let color="grey"
+		let classVar="grey"
 
 		if(type === "user"){
 			exitButton = <div className="remove-btn" onClick={this.handleRemove}>X</div>
 		}else if(type === "suggest"){
 			exitButton = ""
 		}else if(type === "ingredient"){
-			color = this.getColor()
+			classVar = this.getColor()
+		}else if(type === "select" && this.shouldHighlight()){
+			classVar = "highlight"
 		}
 
 		return(
-			<li className={color} onClick={this.handleClick}>
+			<li className={classVar} onClick={this.handleClick}>
 				{this.props.content}
 				{exitButton}
 			</li>

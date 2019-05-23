@@ -258,7 +258,7 @@ select{
 }
 
 .userList li:hover{
-	background-color: #AAA;
+	background-color: #BBB;
 	transition: background-color 0.2s;
 }
 /* SELECTCOMP CSS HERE */
@@ -300,15 +300,35 @@ select{
 }
 
 .ingredientList li.grey{
-	background-color: grey;
+	background-color: #CCC;
+}
+
+.ingredientList li.grey:hover{
+	background-color: #BBB;
 }
 
 .ingredientList li.red{
-	background-color: red;	
+	background-color: #C41E3D;	
+}
+
+.ingredientList li.red:hover{
+	background-color: #b01c37;	
 }
 
 .ingredientList li.green{
-	background-color: green;
+	background-color: #85FF9E;
+}
+
+.ingredientList li.green:hover{
+	background-color: #1add47;
+}
+
+.userList li.highlight{
+	background-color: #888;
+}
+
+.userList li.highlight:hover{
+	background-color: #777;	
 }
 /* PIZZACOMP CSS HERE */
 

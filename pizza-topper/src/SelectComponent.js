@@ -28,7 +28,8 @@ class SelectComponent extends React.Component{
 				object={user}
 				content={user.Name}
 				onItemClick={this.onUserClick}
-				type="suggest"
+				user={this.state.currentUser}
+				type="select"
 			/>
 		)
 	}
