@@ -48,11 +48,9 @@ class SelectComponent extends React.Component{
 	}
 
 	onUserClick = user => {
-		console.log("USER SELECT")
-		let found = this.ingredients.find(element => {
-			return element.Id === 9
+		this.setState({
+			currentUser: user
 		})
-		console.log(found)
 	}
 
 	onIngredientClick = ingredient => {
