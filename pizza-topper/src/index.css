@@ -115,6 +115,47 @@ select{
 	transition:height 0.5s, padding 0.5s, border 0.5s, font-size 0.5s;
 }
 
+.remove-dialog{
+	background-color:white;
+	width:300px;
+	height:auto;
+	border-radius:5px;
+}
+
+.remove-dialog .window-content{
+	display:grid;
+	grid-row-gap: 10px;
+	grid-column-gap: 20px;
+	grid-template-areas: 
+		"msg msg"
+		"positive negative"
+}
+
+.remove-dialog .neg-btn{
+	grid-area:negative;
+}
+
+.remove-dialog .pos-btn{
+	grid-area:positive;
+}
+
+.remove-dialog .alert-msg{
+	grid-area:msg;
+}
+
+.dialog-background{
+	position:fixed;
+	height:100vh;
+	width:100vw;
+	top:0;
+	left:0;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0,0,0,0.5)
+}
+
 /* USERSCOMP CSS HERE */
 .userComp{
 	display:grid;
@@ -127,21 +168,28 @@ select{
 		"suggest users"
 		"guest users"
 		". users"
+		". users"
 }
 
 .userList{
-	grid-area:users;
 	height:100%;
+	padding:0px;
+	margin:0px;
+	justify-content:flex-start;
+}
+
+.userList.users{
+	grid-area:users;
+}
+
+.userList.suggest{
+	grid-area:suggest;
 }
 
 .userSearch{
 	grid-area:search;
 	width:100%;
 	justify-content: center;
-}
-
-.suggestList{
-	grid-area:suggest;
 }
 
 .addGuest{
@@ -175,14 +223,7 @@ select{
 	box-sizing:border-box;
 }
 
-.userComp ul{
-	padding:0px;
-	margin:0px;
-	height:100%;
-	justify-content:flex-start;
-}
-
-.userComp li{
+.userList li{
 	list-style: none;
 	width:100%;
 	background-color: #CCC;
@@ -193,11 +234,11 @@ select{
 	transition: background-color 0.2s;
 }
 
-.userComp li div{
+.userList li div{
 	float:left;
 }
 
-.userComp li .remove-btn{
+.userList li .remove-btn{
 	float:right;
 	color:white;
 	font-weight:bold;
@@ -207,19 +248,68 @@ select{
 	box-sizing:border-box;
 	border-radius: 6px;
 	transition:background-color 0.3s;
+	user-select:none;
 }
 
-.userComp li .remove-btn:hover{
+.userList li .remove-btn:hover{
 	background-color:#FF1053;
 	transition:background-color 0.3s;
 	cursor:pointer;
 }
 
-.userComp li:hover{
+.userList li:hover{
 	background-color: #AAA;
 	transition: background-color 0.2s;
 }
 /* SELECTCOMP CSS HERE */
+.selectComp{
+	display:grid;
+	max-width: 100%;
+	grid-template-columns: 180px 1fr;
+	grid-template-rows: auto;
+	grid-column-gap: 16px;
+	grid-template-areas: 
+		"users ingredients"
+}
+
+.ingredientList{
+	grid-area:ingredients;
+	padding:0;
+	margin:0;
+	display: grid;
+	grid-gap: 8px;
+	grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
+	text-align: center;
+}
+
+.ingredientList li{
+	padding:10px;
+	margin:0;
+	width:100px;
+	list-style: none;
+	border-radius: 4px;
+	background-color: #CCC;
+	transition:background-color 0.3s;
+	user-select:none;
+}
+
+.ingredientList li:hover{
+	background-color: #AAA;
+	transition:background-color 0.3s;
+	cursor:pointer;
+}
+
+.ingredientList li.grey{
+	background-color: grey;
+}
+
+.ingredientList li.red{
+	background-color: red;	
+}
+
+.ingredientList li.green{
+	background-color: green;
+}
 /* PIZZACOMP CSS HERE */
 
 

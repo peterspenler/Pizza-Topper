@@ -1,13 +1,17 @@
 import React from 'react';
+import Alert from './Alert.js'
+import ListItem from './ListItem.js'
 
 class UserComponent extends React.Component{
 	constructor(props){
 		super(props)
 		this.searchRef = React.createRef()
-		this.localId = 0
+		this.alertRef = React.createRef()
+		this.localId = -1
 		this.state = {
 			search: '',
-			suggestions: []
+			suggestions: [],
+			selectedUser: {Name:'', Id:''}
 		}
 	}
 
@@ -39,10 +43,13 @@ class UserComponent extends React.Component{
 
 	addGuest = e => {
 		e.preventDefault()
-		this.props.addUser({Name:this.state.search, Id:this.localId})
-		this.localId--
+		if(this.state.search !== ""){
+			this.props.addUser({Name:this.state.search, Id:this.localId})
+			this.localId--
+		}
 		this.setState({
-			search:''
+			search:'',
+			suggestions: []
 		})
 	}
 
@@ -60,11 +67,34 @@ class UserComponent extends React.Component{
 		this.searchRef.current.focus()
 	}
 
+	removeUser = user => {
+		if(user.Id !== this.props.user.Id){
+			this.setState({
+				selectedUser: user
+			})
+			this.alertRef.current.showAlert("Remove " + user.Name + "?",
+				this.removeConfirm.bind(this), 
+				this.removeCancel.bind(this))
+		}else{
+			this.props.showNotification("Cannot remove yourself")
+		}
+	}
+
+	removeConfirm = (user) => {
+		console.log(this.state.selectedUser.Id)
+		this.props.removeUser(this.state.selectedUser.Id)
+	}
+
+	removeCancel = () => {
+		console.log("NOT REMOVE")	
+	}
+
 	createSuggestList = user => {
 		return(
 			<ListItem
 				key={user.Id}
-				user={user}
+				object={user}
+				content={user.Name}
 				onItemClick={this.selectUser}
 				type="suggest"
 			/>
@@ -75,8 +105,10 @@ class UserComponent extends React.Component{
 		return(
 			<ListItem
 				key={user.Id}
-				user={user}
+				object={user}
+				content={user.Name}
 				onItemClick={this.selectUser}
+				removeUser={this.removeUser}
 				type="user"
 			/>
 		)
@@ -96,57 +128,20 @@ class UserComponent extends React.Component{
 					onKeyDown={this.handleKeyDown}
 				></input>
 				
-				<ul className="suggestList">
+				<ul className="userList suggest">
 					{suggestListItems}
 				</ul>
 
 				<button className="addGuest" onClick={this.addGuest}> Add name as Guest </button>
 
-				<ul className="userList">
+				<ul className="userList users">
 					Users:
 					{userListItems}
 				</ul>
+				<Alert
+					ref={this.alertRef}
+				/>
 			</div>
-		)
-	}
-}
-
-class ListItem extends React.Component{
-	constructor(props){
-		super(props)
-		this.state = {
-			type: this.props.type
-		}
-	}
-
-	handleClick = e => {
-		e.preventDefault()
-		if(this.props.type === "suggest"){
-			this.props.onItemClick(this.props.user)
-		}else if(this.props.type === "user"){
-			console.log("USER")
-		}
-	}
-
-	handleRemove = e => {
-		e.stopPropagation()
-		console.log("REMOVE")
-	}
-
-	render() {
-		const type = this.state.type
-		let exitButton
-
-		if(type === "user"){
-			exitButton = <div className="remove-btn" onClick={this.handleRemove}>X</div>
-		}else if(type === "suggest"){
-			exitButton = ""
-		}
-		return(
-			<li onClick={this.handleClick}>
-				{this.props.user.Name}
-				{exitButton}
-			</li>
 		)
 	}
 }
