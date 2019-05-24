@@ -14,12 +14,13 @@ img {
 
 /* NAVBAR CSS HERE */
 .navbar{
+	position:fixed;
 	color:white;
 	background-color:#6C6EA0;
 	height:100%;
-	width:100%;
+	width:120px;
 	grid-area:navbar;
-	box-shadow: 5px 5px 20px -5px rgba(0,0,0,0.6);
+	box-shadow: 5px 5px 20px -8px rgba(0,0,0,0.6);
 }
 
 .navbar p{
@@ -61,6 +62,7 @@ select{
 
 /* SELECTOR CSS HERE */
 .selector{
+	grid-area: selector;
 	background-color:#C1CAD6;
 	padding:20px 30px;
 }
