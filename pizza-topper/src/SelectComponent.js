@@ -4,53 +4,11 @@ import ListItem from './ListItem.js'
 class SelectComponent extends React.Component{
 	constructor(props){
 		super(props)
-		this.providers = [
-			{	Name: "test",
-				Ingredients: [
-					{Name:'Pepperoni', Id:1},
-					{Name:'Green Peppers', Id:2},
-					{Name:'Onions', Id:3},
-					{Name:'Jalapenos', Id:4},
-					{Name:'Sausage', Id:5},
-					{Name:'Tomatos', Id:6},
-					{Name:'Bacon', Id:7},
-					{Name:'Chicken', Id:8},
-					{Name:'Spinach', Id:9},
-					{Name:'Pineapple', Id:10},
-				]
-			},
-			{	Name: "test2",
-				Ingredients: [
-					{Name:'Pepperoni', Id:1},
-					{Name:'Green Peppers', Id:2},
-					{Name:'Red Peppers', Id:12},
-					{Name:'Jalapenos', Id:4},
-					{Name:'Beef', Id:11},
-					{Name:'Tomatos', Id:6},
-					{Name:'Bacon', Id:7},
-				]
-			}
-		]
 		this.state = {
 			currentUser: this.props.user,
-			ingredients: this.providers[0].Ingredients,
-			providerName: this.providers[0].Name
 		}
 	}
-
-	componentDidMount(){
-		fetch("http://localhost:4000/static/providers.json")
-		.then(res => res.json())
-    	.then(
-    		(result) => {
-    			this.providers = result.Providers
-			},
-			(error) => {
-				console.log(error)
-			}
-		)
-	}
-
+	
 	createUserList = user => {
 		return(
 			<ListItem
@@ -78,6 +36,15 @@ class SelectComponent extends React.Component{
 		)
 	}
 
+	createProviderList = provider => {
+		if(provider.Value === "master"){
+			return
+		}
+		return(
+			<option key={provider.Id} value={provider.Value}>{provider.Name}</option>
+		)
+	}
+
 	onUserClick = user => {
 		this.setState({
 			currentUser: user
@@ -90,18 +57,14 @@ class SelectComponent extends React.Component{
 
 	onProviderSelect = e => {
 		e.preventDefault()
-		let index = this.providers.findIndex((obj => obj.Name === e.target.value))
-		if(index !== -1){
-			this.setState({
-				ingredients: this.providers[index].Ingredients,
-				providerName: e.target.value
-			})
-		}
+		this.props.changeProvider(e.target.value)
 	}
 
 	render(){
 		const userListItems = this.props.userList.map(this.createUserList)
-		const ingredientListItems = this.state.ingredients.map(this.createIngredientList)
+		const ingredientListItems = this.props.ingredients.map(this.createIngredientList)
+		const providerList = this.props.providers.map(this.createProviderList)
+
 		return(
 			<div className="selectComp">
 				<ul className="userList users">
@@ -110,13 +73,8 @@ class SelectComponent extends React.Component{
 				</ul>
 				<div>
 					Provider:<br/>
-					<select value={this.state.providerName} onChange={this.onProviderSelect}>
-						<option value="test">Test</option>
-						<option value="test2">Test 2</option>
-						<option value="dominos">Dominos</option>
-						<option value="pizza-pizza">Pizza Pizza</option>
-						<option value="papa-johns">Papa John's</option>
-						<option value="toppers">Topper's</option>
+					<select value={this.props.providerValue} onChange={this.onProviderSelect}>
+						{providerList}
 					</select>
 				</div>
 				<ul className="ingredientList">

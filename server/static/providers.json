@@ -1,5 +1,7 @@
 { "Providers":[
-	{	"Name": "test",
+	{	"Name": "Test",
+		"Value": "test",
+		"Id": -1,
 		"Ingredients": [
 			{"Name":"Pepperoni", "Id":1},
 			{"Name":"Green Peppers", "Id":16},
@@ -13,7 +15,9 @@
 			{"Name":"Pineapple", "Id":18}
 		]
 	},
-	{	"Name": "test2",
+	{	"Name": "Test 2",
+		"Value": "test2",
+		"Id": -2,
 		"Ingredients": [
 			{"Name":"Pepperoni", "Id":1},
 			{"Name":"Green Peppers", "Id":16},
@@ -24,7 +28,9 @@
 			{"Name":"Bacon", "Id":6}
 		]
 	},
-	{	"Name": "dominos",
+	{	"Name": "Dominos",
+		"Value": "dominos",
+		"Id": 1,
 		"Ingredients": [
 			{"Name":"Pepperoni", "Id":1},
 			{"Name":"Brooklyn Pepperoni", "Id":2},
@@ -51,8 +57,9 @@
 			{"Name":"Roasted Red Peppers", "Id":23}
 		]
 	},
-	{
-		"Name": "master",
+	{	"Name": "Master",
+		"Value": "master",
+		"Id": 0,
 		"Ingredients": [
 			{"Name":"Pepperoni", "Id":1},
 			{"Name":"Brooklyn Pepperoni", "Id":2},

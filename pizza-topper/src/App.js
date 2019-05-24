@@ -11,6 +11,22 @@ class App extends React.Component {
 		}
 	}
 
+	componentDidMount(){
+		console.log(window.location.pathname)
+		let path = window.location.pathname
+		let page = ""
+		if(path === "/user" || path === "/"){
+			page = "User"
+		}else if(path === "/select"){
+			page = "Select"
+		}else if(path === "/pizza"){
+			page = "Pizza"
+		}
+		this.setState({
+			page: page
+		})
+	}
+
 	changePage = page =>{
 		this.setState({
 			page: page
@@ -22,10 +38,10 @@ class App extends React.Component {
 			<div className="App">
 				<NavBar 
 					changePage = {this.changePage}
+					page = {this.state.page}
 				/>
 				<Selector 
 					page = {this.state.page}
-					showAlert={this.showAlert}
 				/>
 			</div>
 		);

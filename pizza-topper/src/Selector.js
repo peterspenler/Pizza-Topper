@@ -13,7 +13,25 @@ class Selector extends React.Component{
 			notification: 'Notification',
 			currentUser: {Name:"Peter", Id:1},
 			userList: [{Name:"Peter", Id:1}],
+			providers: [{Name:'', Value: '', Id:'', Ingredients:[]}],
+			providerIndex: 0
 		}
+	}
+
+	componentDidMount(){
+		console.log("MOUNT_SELECT")
+		fetch("http://localhost:4000/static/providers.json")
+		.then(res => res.json())
+    	.then(
+    		(result) => {
+    			this.setState({
+    				providers: result.Providers,
+    			})
+			},
+			(error) => {
+				console.log(error)
+			}
+		)
 	}
 
 	showNotification = msg => {
@@ -88,6 +106,15 @@ class Selector extends React.Component{
 		}
 	}
 
+	changeProvider = value => {
+		let index = this.state.providers.findIndex((obj => obj.Value === value))
+		if(index !== -1){
+			this.setState({
+				providerIndex: index
+			})
+		}
+	}
+
 	render(){
 		return(
 			<div className="selector">
@@ -114,7 +141,10 @@ class Selector extends React.Component{
 								userList={this.state.userList}
 								modIngredient={this.modIngredient}
 								getIngredients={this.getIngredients}
-								showNotification={this.showNotification}
+								providers={this.state.providers}
+								ingredients={this.state.providers[this.state.providerIndex].Ingredients}
+								providerValue={this.state.providers[this.state.providerIndex].Value}
+								changeProvider={this.changeProvider}
 							/>}/>
 							<Route path="/pizza" render={(props) => <PizzaComponent {...props}
 								showNotification={this.showNotification}
