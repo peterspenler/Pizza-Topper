@@ -309,6 +309,7 @@ select{
 
 .ingredientList li:hover{
 	background-color: #AAA;
+	color:black;
 	transition:background-color 0.3s;
 	cursor:pointer;
 }
@@ -322,7 +323,8 @@ select{
 }
 
 .ingredientList li.red{
-	background-color: #C41E3D;	
+	background-color: #C41E3D;
+	color:white;	
 }
 
 .ingredientList li.red:hover{
