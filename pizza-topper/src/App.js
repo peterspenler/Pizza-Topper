@@ -12,10 +12,9 @@ class App extends React.Component {
 	}
 
 	componentDidMount(){
-		console.log(window.location.pathname)
 		let path = window.location.pathname
 		let page = ""
-		if(path === "/user" || path === "/"){
+		if(path === "/users" || path === "/"){
 			page = "User"
 		}else if(path === "/select"){
 			page = "Select"

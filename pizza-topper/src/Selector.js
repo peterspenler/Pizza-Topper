@@ -19,7 +19,6 @@ class Selector extends React.Component{
 	}
 
 	componentDidMount(){
-		console.log("MOUNT_SELECT")
 		fetch("http://localhost:4000/static/providers.json")
 		.then(res => res.json())
     	.then(
