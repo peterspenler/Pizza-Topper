@@ -43,17 +43,17 @@ class NavBar extends React.Component {
 				<p>Pizza Topper</p>
 				<Link to='/users'>
 					<button id="user-btn" className={userClass} onClick={e => this.handleClick(e, "user")}>
-						<img className="icon" alt="Users" src={userIcon}/>
+						<img className="icon" src={userIcon} alt="User by Hrbon from Noun Project"/>
 					</button>
 				</Link>
 				<Link to='/select'>
 					<button id="select-btn" className={selectClass} onClick={e => this.handleClick(e, "select")}>
-						<img className="icon" alt="Select toppings" src={selectIcon}/>
+						<img className="icon" src={selectIcon} alt="click by Numero Uno from Noun Project"/>
 					</button>
 				</Link>
 				<Link to='/pizza'>
 					<button id="pizza-btn" className={pizzaClass} onClick={e => this.handleClick(e, "pizza")}>
-						<img className="icon" alt="Pizzas" src={pizzaIcon}/>
+						<img className="icon" src={pizzaIcon} alt="pizza slice by Vectors Market from Noun Project"/>
 					</button>
 				</Link>
 			</div>
