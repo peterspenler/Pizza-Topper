@@ -21,7 +21,7 @@ class UserComponent extends React.Component{
 			search: searchText
 		})
 
-		fetch("http://localhost:4000/data/" + e.target.value)
+		fetch("http://192.168.1.138:4000/data/" + e.target.value)
 		.then(res => res.json())
     	.then(
     		(result) => {

@@ -10,7 +10,7 @@ class ListItem extends React.Component{
 
 	handleClick = e => {
 		e.preventDefault()
-		if(this.props.type !== "user"){
+		if(this.props.type !== "user" && typeof this.props.onItemClick !== 'undefined'){
 			this.props.onItemClick(this.props.object)
 		}
 	}

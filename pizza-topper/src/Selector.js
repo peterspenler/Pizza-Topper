@@ -14,12 +14,14 @@ class Selector extends React.Component{
 			currentUser: {Name:"Peter", Id:1},
 			userList: [{Name:"Peter", Id:1}],
 			providers: [{Name:'', Value: '', Id:'', Ingredients:[]}],
-			providerIndex: 0
+			providerIndex: 0,
+			numPizzas: 1,
+			pizzas: [{Id:1, NumIngredients: 2, Ingredients:[]}],
 		}
 	}
 
 	componentDidMount(){
-		fetch("http://localhost:4000/static/providers.json")
+		fetch("http://192.168.1.138:4000/static/providers.json")
 		.then(res => res.json())
     	.then(
     		(result) => {
@@ -114,6 +116,56 @@ class Selector extends React.Component{
 		}
 	}
 
+	updateNumPizzas = num =>{
+		if(num > 0 && num <= 10){
+			let pizzaArray = this.state.pizzas
+			if(this.state.pizzas.length < num){
+				pizzaArray.push({Id:num, NumIngredients: 1, Ingredients:[]})
+			}else if(this.state.pizzas.length > num){
+				pizzaArray.pop()
+			}
+			this.setState({
+				numPizzas: num
+			})
+			this.pickIngredients()
+		}
+	}
+
+	updateIngredientNum = (id, numIngredients) => {
+		if(numIngredients > 0 && numIngredients <= 15){
+			let pizzaList = this.state.pizzas
+			let index = pizzaList.findIndex((obj => obj.Id === id))
+			
+			if(index !== -1){
+				pizzaList[index].NumIngredients = numIngredients
+				this.setState({
+					pizzas: pizzaList
+				})
+				this.pickIngredients()
+			}
+		}
+	}
+
+	pickIngredients(){
+		let provIndx = this.state.providers.findIndex((obj => obj.Value === "master"))
+		let ingLength = this.state.providers[provIndx].Ingredients.length
+		let pizzas = this.state.pizzas
+
+		for(var i = 0; i < pizzas.length; i++){
+			pizzas[i].Ingredients = []
+			for(let j = 0; j < pizzas[i].NumIngredients; j++){
+				do{
+					let rand = Math.floor(Math.random() * Math.floor(ingLength))
+					let ingredient = this.state.providers[provIndx].Ingredients[rand]
+					let test = pizzas[i].Ingredients.findIndex((obj => obj.Id === ingredient.Id))
+					if(test === -1){
+						pizzas[i].Ingredients.push(ingredient)
+					}
+				} while(pizzas[i].Ingredients.length <= j)
+			}
+		}
+	}
+
 	render(){
 		return(
 			<div className="selector">
@@ -146,6 +198,10 @@ class Selector extends React.Component{
 								changeProvider={this.changeProvider}
 							/>}/>
 							<Route path="/pizza" render={(props) => <PizzaComponent {...props}
+								numPizzas={this.state.numPizzas}
+								updateNumPizzas={this.updateNumPizzas}
+								updateIngredientNum={this.updateIngredientNum}
+								pizzas={this.state.pizzas}
 								showNotification={this.showNotification}
 							/>}/>
 						</Switch>
